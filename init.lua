@@ -1,7 +1,7 @@
 --[[ init.lua ]]
 
 -- Impatient for faster loading
-require('impatient')
+--require('impatient')
 
 -- LEADER
 vim.g.mapleader = " " -- works across all nvim files
