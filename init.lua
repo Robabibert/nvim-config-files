@@ -302,10 +302,9 @@ local nvim_lsp = require('lspconfig')
 -- RUST
 -- -------------------------------------
 
-local extension_path = '/codelldb/extension'
+local extension_path = '/codelldb/extension/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
-
 
 local rt = require("rust-tools")
 rt.setup({

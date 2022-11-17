@@ -113,7 +113,7 @@ nmap <F6> <cmd>call vimspector#Reset()<cr>
 nmap <F11> <cmd>call vimspector#StepOut()<cr>")
 nmap <F9> <cmd>call vimspector#StepInto()<cr>")
 ]])
-map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
+map('n', "<F3>", ":lua require'dap'.toggle_breakpoint()")
 map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
 map('n', "<F7>", ":call vimspector#Evaluate()<cr>")
 
