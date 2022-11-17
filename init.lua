@@ -3,14 +3,10 @@
 -- Impatient for faster loading
 --require('impatient')
 
+
 -- LEADER
 vim.g.mapleader = " " -- works across all nvim files
 
--- Color theme
-require('kanagawa').setup({
-    keywordStyle = { italic = false, bold = true },
-})
-vim.cmd("colorscheme kanagawa")
 
 -- Highlight colors
 vim.cmd([[
@@ -28,6 +24,13 @@ require('vars') -- Variables
 require('opts') -- Options
 require('keys') -- Keymaps
 require('plug') -- Plugins
+
+-- Color theme
+require('kanagawa').setup({
+    keywordStyle = { italic = false, bold = true },
+})
+vim.cmd("colorscheme kanagawa")
+
 
 -- Lua line
 require('lualine').setup {
