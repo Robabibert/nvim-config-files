@@ -3,24 +3,23 @@
 
 -- keybindings
 
-local m=require'mapx'.setup{ global = true, whichkey = true }
+local m=require('mapx').setup({ global = "force", whichkey = true })
 
 -- Also supports setting WhichKey group names
 
-
-nnoremap("<F5>", "<Cmd>lua require'dap'.continue()<CR>","silent",{ft="rs"})
-nnoremap("<F10>", "<Cmd>lua require'dap'.step_over()<CR>","silent",{ft="rs"})
-nnoremap("<F11>", "<Cmd>lua require'dap'.step_into()<CR>","silent",{ft="rs"})
-nnoremap("<F12>", "<Cmd>lua require'dap'.step_out()<CR>","silent",{ft="rs"})
-nnoremap("<Leader>b", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>","silent",{ft="rs"})
-nnoremap("<Leader>B", "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>","silent",{ft="rs"})
-nnoremap("<Leader>lp", "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>","silent",{ft="rs"})
-nnoremap("<Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>","silent",{ft="rs"})
-nnoremap("<Leader>dl", "<Cmd>lua require'dap'.run_last()<CR>","silent",{ft="rs"})
+nnoremap("<F5>", "<Cmd>lua require'dap'.continue()<CR>","silent")
+nnoremap("<F10>", "<Cmd>lua require'dap'.step_over()<CR>","silent")
+nnoremap("<F11>", "<Cmd>lua require'dap'.step_into()<CR>","silent")
+nnoremap("<F12>", "<Cmd>lua require'dap'.step_out()<CR>","silent")
+nnoremap("<Leader>b", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>","silent")
+nnoremap("<Leader>B", "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>","silent")
+nnoremap("<Leader>lp", "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>","silent")
+nnoremap("<Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>","silent")
+nnoremap("<Leader>dl", "<Cmd>lua require'dap'.run_last()<CR>","silent")
 
 
 -- Rust Hover acions
-nnoremap("<C-space>","<Cmd>RustHiverActions","silent",{ft="rs"})
+nnoremap("<C-space>","<Cmd>RustHoverActions<CR>")
 
 
 

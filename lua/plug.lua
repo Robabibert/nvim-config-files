@@ -75,9 +75,21 @@ return require('packer').startup(function()
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
     use 'puremourning/vimspector' -- Debugger
     use 'mfussenegger/nvim-dap' -- Debugger
-    use "b0o/mapx.nvim" -- keymapping with filetype and whichley
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
+    use "b0o/mapx.nvim" -- keymapping with filetype and whichley
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} } -- debugger ui
+    use {
+        "folke/which-key.nvim",
+        config = function()
+          require("which-key").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+          }
+        end
+      }
+
     if packer_bootstrap then
         require('packer').sync()
     end

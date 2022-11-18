@@ -13,8 +13,7 @@ function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- mappings and config for rust language 
-require("lua.languages.rust")
+
 
 
 -- Load all OPTs
@@ -145,3 +144,6 @@ vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
 -- Toggle in VISUAL mode
 vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
 vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
+
+-- mappings and config for rust language 
+require("languages.rust")
