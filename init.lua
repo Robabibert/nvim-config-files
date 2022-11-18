@@ -20,10 +20,10 @@ hi ColorColumn guifg=NONE guibg=#204563 gui=NONE
 ]])
 
 -- IMPORTS
-require('vars') -- Variables
-require('opts') -- Options
-require('keys') -- Keymaps
-require('plug') -- Plugins
+require('lua.vars') -- Variables
+require('lua.opts') -- Options
+require('lua.keys') -- Keymaps
+require('lua.plug') -- Plugins
 
 -- Color theme
 require('kanagawa').setup({
