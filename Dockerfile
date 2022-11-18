@@ -82,9 +82,9 @@ RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 FROM nvim as development
 
-#disable ASLR for debugging
+#disable ASLR for debugging with lldb
 #RUN echo 0  > /proc/sys/kernel/randomize_va_space
 
 #allow rust backtrace
-ENV RUST_BACKTRACE=1
+ENV RUST_BACKTRACE=full
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"

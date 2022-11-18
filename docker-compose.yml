@@ -5,6 +5,10 @@ services:
     build: 
       context: ./
       target: development
+    cap_add:
+      - "CAP_SYS_PTRACE"
+    security_opt:
+      - seccomp:unconfined
     volumes:
       #bind the development files into base
       - type: bind
