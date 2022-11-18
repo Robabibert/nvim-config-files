@@ -19,6 +19,8 @@ nnoremap("<Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>","silent",{ft="rs"
 nnoremap("<Leader>dl", "<Cmd>lua require'dap'.run_last()<CR>","silent",{ft="rs"})
 
 
+-- Rust Hover acions
+nnoremap("<C-space>","<Cmd>RustHiverActions","silent",{ft="rs"})
 
 
 
