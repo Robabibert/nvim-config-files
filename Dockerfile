@@ -76,3 +76,7 @@ RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ENV XDG_CONFIG_HOME=/root/.config
 
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+
+FROM nvim as development
+CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
