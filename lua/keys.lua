@@ -147,3 +147,7 @@ vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
 
 -- mappings and config for rust language 
 require("languages.rust")
+
+require('mapx').setup({ global = "force", whichkey = true })
+nnoremap("<Leader>D", "<Cmd>lua require('dapui').toggle()<CR>","silent")--toggle debug ui
+

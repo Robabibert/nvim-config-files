@@ -21,6 +21,8 @@ RUN apt-get update \
     # Node required for vim-vimrc-coc example
     && curl -sL https://deb.nodesource.com/setup_14.x  | bash - \
     && apt-get install nodejs \
+    #get fish terminal
+    && apt-get install fish -y\
     # Setup latest vim with vim-plug
     && apt-get install -y vim \
     && curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
