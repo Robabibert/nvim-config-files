@@ -6,7 +6,6 @@
 local m=require('mapx').setup({ global = "force", whichkey = true })
 
 -- Also supports setting WhichKey group names
-
 nnoremap("<F5>", "<Cmd>lua require'dap'.continue()<CR>","silent")
 nnoremap("<F10>", "<Cmd>lua require'dap'.step_over()<CR>","silent")
 nnoremap("<F11>", "<Cmd>lua require'dap'.step_into()<CR>","silent")
