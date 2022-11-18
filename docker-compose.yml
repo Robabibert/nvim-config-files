@@ -11,16 +11,16 @@ services:
         source: ./../
         target: /base
       #bind the nvim configuration files. 
-      #Can be omitted if read only config files are preferred
-      - type: bind
-        source: ./lua
-        target: /root/.config/nvim/lua
-      - type: bind
-        source: ./spell
-        target: /root/.config/nvim/spell
-      - type: bind
-        source: ./init.lua
-        target: /root/.config/nvim/init.lua
-      - type: bind
-        source: ./.luarc.json
-        target: /root/.config/nvim/.luarc.json
+      ##Can be omitted if read only config files are preferred
+      #- type: bind
+      #  source: ./lua
+      #  target: /root/.config/nvim/lua
+      #- type: bind
+      #  source: ./spell
+      #  target: /root/.config/nvim/spell
+      #- type: bind
+      #  source: ./init.lua
+      #  target: /root/.config/nvim/init.lua
+      #- type: bind
+      #  source: ./.luarc.json
+      #  target: /root/.config/nvim/.luarc.json
