@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  development:
+    build: 
+      context: ./
+      target: development
+    volumes:
+      - type: bind
+        source: ./
+        target: /base
+    
+ 
