@@ -15,7 +15,7 @@ end
 
 
 -- mappings and config for rust language 
-require("rust")
+require("languages.rust")
 
 
 -- Load all OPTs
