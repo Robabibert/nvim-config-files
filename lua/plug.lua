@@ -15,7 +15,6 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim' -- colorscheme
-    use "rebelot/kanagawa.nvim"
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'xiyaowong/nvim-transparent' -- enable transparency
     use 'simrat39/symbols-outline.nvim' -- enable symbols tab
