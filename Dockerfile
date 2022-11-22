@@ -20,7 +20,7 @@ RUN apt-get update \
     && apt-get install -y build-essential curl git exuberant-ctags software-properties-common gnupg git \
     # Node required for vim-vimrc-coc example
     && curl -sL https://deb.nodesource.com/setup_14.x  | bash - \
-    && apt-get install nodejs npm \
+    && apt install nodejs npm \
     #get fish terminal
     && apt-get install fish -y\
     # Setup latest vim with vim-plug
