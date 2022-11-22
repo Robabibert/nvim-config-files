@@ -79,12 +79,14 @@ ENV XDG_CONFIG_HOME=/root/.config
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # get markdown-preview
-ENV NODE_OPTIONS=--openssl-legacy-provider
+#ENV NODE_OPTIONS=--openssl-legacy-provider
 
 WORKDIR /root/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim
 RUN yarn install
 RUN yarn build
 WORKDIR /base
+
+#RUN nvim --headless -c 'PackerInstall'
 
 FROM nvim as development
 
