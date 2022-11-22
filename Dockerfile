@@ -18,8 +18,7 @@ RUN rm ./nvim-linux64.deb.sum
 RUN apt-get update \
     # Install common deps
     && apt-get install -y build-essential curl git exuberant-ctags software-properties-common gnupg git \
-    # Node required for vim-vimrc-coc example
-    && curl -sL https://deb.nodesource.com/setup_14.x  | bash - \
+    # Node required for vim-vimrc-coc markdown-preview example
     && apt install nodejs npm \
     #get fish terminal
     && apt-get install fish -y\
