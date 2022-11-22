@@ -96,7 +96,7 @@ return require('packer').startup(function()
           require("nvim-surround").setup({
               -- Configuration here, or leave empty to use defaults
           })
-
+    })
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
