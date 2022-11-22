@@ -19,7 +19,7 @@ RUN apt-get update \
     # Install common deps
     && apt-get install -y build-essential curl git exuberant-ctags software-properties-common gnupg git \
     # Node required for vim-vimrc-coc markdown-preview example
-    && apt install nodejs npm \
+    && apt install nodejs npm -y\
     #get fish terminal
     && apt-get install fish -y\
     # Setup latest vim with vim-plug
