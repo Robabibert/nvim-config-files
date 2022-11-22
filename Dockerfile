@@ -18,9 +18,8 @@ RUN rm ./nvim-linux64.deb.sum
 RUN apt-get update \
     # Install common deps
     && apt-get install -y build-essential curl git exuberant-ctags software-properties-common gnupg git \
-    # Node required for vim-vimrc-coc example
-    && curl -sL https://deb.nodesource.com/setup_14.x  | bash - \
-    && apt-get install nodejs npm \
+    # Node required for vim-vimrc-coc markdown-preview example
+    && apt install nodejs npm -y\
     #get fish terminal
     && apt-get install fish -y\
     # Setup latest vim with vim-plug
@@ -64,6 +63,15 @@ RUN curl -L -o /codelldb/codelldb-x86_64-linux.vsix https://github.com/vadimcn/v
 RUN unzip /codelldb/codelldb-x86_64-linux.vsix -d /codelldb
 RUN rm /codelldb/codelldb-x86_64-linux.vsix
 
+#Get vale for markdown_preview
+
+WORKDIR /root/.local/bin
+RUN wget https://github.com/errata-ai/vale/releases/download/v2.21.1/vale_2.21.1_checksums.txt
+RUN wget https://github.com/errata-ai/vale/releases/download/v2.21.1/vale_2.21.1_Linux_64-bit.tar.gz 
+RUN cat vale_2.21.1_checksums.txt|grep Linux_64|sha256sum --check
+RUN tar xfvz vale_2.21.1_Linux_64-bit.tar.gz  
+RUN chmod +x vale
+WORKDIR /
 
 #Copy config files
 COPY lua /root/.config/nvim/lua
@@ -79,6 +87,15 @@ ENV XDG_CONFIG_HOME=/root/.config
 
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
+# get markdown-preview
+#ENV NODE_OPTIONS=--openssl-legacy-provider
+
+WORKDIR /root/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim
+RUN yarn install
+RUN yarn build
+WORKDIR /base
+
+#RUN nvim --headless -c 'PackerInstall'
 
 FROM nvim as development
 

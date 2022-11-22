@@ -19,9 +19,8 @@ return require('packer').startup(function()
     use 'xiyaowong/nvim-transparent' -- enable transparency
     use 'simrat39/symbols-outline.nvim' -- enable symbols tab
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' } -- good folding
-    use 'wbthomason/packer.nvim' -- Packer package manager
     use "max397574/better-escape.nvim" -- faster jj / kshadowk
-    use 'jose-elias-alvarez/null-ls.nvim' -- Use Vale as a prose linter
+    --use 'jose-elias-alvarez/null-ls.nvim' -- Use Vale as a prose linter
     use 'williamboman/mason-lspconfig.nvim' -- closes gaps with mason
     use 'tanvirtin/monokai.nvim' -- Color scheme
     use { 'kyazdani42/nvim-tree.lua', -- Filesystem navigation
@@ -36,7 +35,6 @@ return require('packer').startup(function()
     use 'tpope/vim-surround' -- Add "", '', (),
     use { 'phaazon/hop.nvim', branch = 'v2' } -- Navitage to any word in the file
     use 'onsails/lspkind.nvim' -- shows icons in cmp
-    use 'lukas-reineke/headlines.nvim' -- highlights headlines for markdown, other txt files
     use 'j-hui/fidget.nvim' -- sho status of nvim-lsp progress
     use 'L3MON4D3/LuaSnip' -- snippets for completion
     use 'saadparwaiz1/cmp_luasnip' -- snippets for completion'
@@ -90,8 +88,9 @@ return require('packer').startup(function()
         end
       }
     use {"kylechui/nvim-surround"}
-   -- install without yarn or npm
-use {'iamcco/markdown-preview.nvim'}
+
+    use{"iamcco/markdown-preview.nvim"}
+
     if packer_bootstrap then
         require('packer').sync()
     end
