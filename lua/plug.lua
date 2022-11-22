@@ -96,13 +96,14 @@ return require('packer').startup(function()
           require("nvim-surround").setup({
               -- Configuration here, or leave empty to use defaults
           })
-     -- install without yarn or npm
+
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
       end
     })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     if packer_bootstrap then
         require('packer').sync()
