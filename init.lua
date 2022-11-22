@@ -30,6 +30,7 @@ require('kanagawa').setup({
     keywordStyle = { italic = false, bold = true },
 })
 vim.cmd("colorscheme kanagawa")
+vim.cmd[[colorscheme tokyostorm]]
 
 
 -- Lua line
