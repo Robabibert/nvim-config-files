@@ -109,22 +109,18 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>'
 
 
 -- null-ls for Vale, Selene and Markdown linters
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.diagnostics.vale,
-        require("null-ls").builtins.diagnostics.selene,
-        require("null-ls").builtins.diagnostics.markdownlint.with({
-            diagnostics_format = "[#{c}] #{m} (#{s})",
-            filter = function(diagnostic)
-                return diagnostic.code ~= "MD013/line-length"
-            end,
-        }),
-    },
-})
-
-
--- Headlines for Markdown
-require "headlines".setup()
+--require("null-ls").setup({
+--    sources = {
+--        require("null-ls").builtins.diagnostics.vale,
+--        require("null-ls").builtins.diagnostics.selene,
+--        require("null-ls").builtins.diagnostics.markdownlint.with({
+--            diagnostics_format = "[#{c}] #{m} (#{s})",
+--            filter = function(diagnostic)
+--                return diagnostic.code ~= "MD013/line-length"
+--            end,
+--        }),
+--    },
+--})
 
 
 -- Fidget - show status of LSP progress
@@ -137,11 +133,11 @@ require "fidget".setup {
 
 
 -- Vale prose lint
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.diagnostics.vale,
-    },
-})
+--require("null-ls").setup({
+--    sources = {
+--        require("null-ls").builtins.diagnostics.vale,
+--    },
+--})
 
 
 -- Hop
@@ -673,3 +669,6 @@ require("dapui").setup({
       max_value_lines = 100, -- Can be integer or nil.
     }
   })
+  -- markdown_preview
+  --set custom port
+  vim.g.mkdp_port='8765'

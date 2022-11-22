@@ -7,6 +7,9 @@ services:
       target: development
     cap_add:
       - "CAP_SYS_PTRACE"
+    ports:
+      - "8765:8765" # Markdown preview port
+      
     security_opt:
       - seccomp:unconfined
     volumes:

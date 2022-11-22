@@ -20,7 +20,7 @@ return require('packer').startup(function()
     use 'simrat39/symbols-outline.nvim' -- enable symbols tab
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' } -- good folding
     use "max397574/better-escape.nvim" -- faster jj / kshadowk
-    use 'jose-elias-alvarez/null-ls.nvim' -- Use Vale as a prose linter
+    --use 'jose-elias-alvarez/null-ls.nvim' -- Use Vale as a prose linter
     use 'williamboman/mason-lspconfig.nvim' -- closes gaps with mason
     use 'tanvirtin/monokai.nvim' -- Color scheme
     use { 'kyazdani42/nvim-tree.lua', -- Filesystem navigation
