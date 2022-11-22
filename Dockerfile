@@ -80,8 +80,7 @@ RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # get markdown-preview
 ENV NODE_OPTIONS=--openssl-legacy-provider
-WORKDIR /root/.local/share/nvim/site/pack/packer/start/
-RUN git clone https://github.com/iamcco/markdown-preview.nvim.git
+
 WORKDIR /root/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim
 RUN yarn install
 RUN yarn build
