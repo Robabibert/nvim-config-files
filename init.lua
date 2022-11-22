@@ -669,6 +669,3 @@ require("dapui").setup({
       max_value_lines = 100, -- Can be integer or nil.
     }
   })
-  -- markdown_preview
-  --set custom port
-  vim.g.mkdp_port='8765'
