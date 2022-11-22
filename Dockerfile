@@ -63,6 +63,15 @@ RUN curl -L -o /codelldb/codelldb-x86_64-linux.vsix https://github.com/vadimcn/v
 RUN unzip /codelldb/codelldb-x86_64-linux.vsix -d /codelldb
 RUN rm /codelldb/codelldb-x86_64-linux.vsix
 
+#Get vale for markdown_preview
+
+WORKDIR /root/.local/bin
+RUN wget https://github.com/errata-ai/vale/releases/download/v2.21.1/vale_2.21.1_checksums.txt
+RUN wget https://github.com/errata-ai/vale/releases/download/v2.21.1/vale_2.21.1_Linux_64-bit.tar.gz 
+RUN cat vale_2.21.1_checksums.txt|grep Linux_64|sha256sum --check
+RUN tar xfvz vale_2.21.1_Linux_64-bit.tar.gz  
+RUN chmod +x vale
+WORKDIR /
 
 #Copy config files
 COPY lua /root/.config/nvim/lua
