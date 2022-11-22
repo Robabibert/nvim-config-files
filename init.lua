@@ -26,10 +26,10 @@ require('opts') -- Options
 require('keys') -- Keymaps
 
 -- Color theme
-require('kanagawa').setup({
-    keywordStyle = { italic = false, bold = true },
-})
-vim.cmd("colorscheme kanagawa")
+--require('kanagawa').setup({
+--    keywordStyle = { italic = false, bold = true },
+--})
+--vim.cmd("colorscheme kanagawa")
 vim.cmd[[colorscheme tokyostorm]]
 
 
