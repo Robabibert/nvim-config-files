@@ -7,8 +7,8 @@ services:
       target: development
     cap_add:
       - "CAP_SYS_PTRACE"
-    ports:
-      - "1-65535:1-65535" #forward ALL ports
+        #    ports:
+      #      - "1-65535:1-65535" #forward ALL ports
       
     security_opt:
       - seccomp:unconfined
