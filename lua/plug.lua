@@ -35,7 +35,6 @@ return require('packer').startup(function()
     use 'tpope/vim-surround' -- Add "", '', (),
     use { 'phaazon/hop.nvim', branch = 'v2' } -- Navitage to any word in the file
     use 'onsails/lspkind.nvim' -- shows icons in cmp
-    use 'lukas-reineke/headlines.nvim' -- highlights headlines for markdown, other txt files
     use 'j-hui/fidget.nvim' -- sho status of nvim-lsp progress
     use 'L3MON4D3/LuaSnip' -- snippets for completion
     use 'saadparwaiz1/cmp_luasnip' -- snippets for completion'
