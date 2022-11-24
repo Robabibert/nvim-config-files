@@ -24,7 +24,6 @@ nnoremap("<C-space>","<Cmd>RustHoverActions<CR>",{ft="rust"})
 
 -- LSP Navigation
 -- Code Actions
-map('n', "ca", ":lua vim.lsp.buf.code_action()<CR>")
 vim.cmd([[
 nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
