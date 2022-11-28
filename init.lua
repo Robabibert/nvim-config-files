@@ -26,16 +26,16 @@ require('opts') -- Options
 require('keys') -- Keymaps
 
 -- Color theme
-require('kanagawa').setup({
-    keywordStyle = { italic = false, bold = true },
+require("tokyonight").setup({
+	style= "storm"
+
 })
-vim.cmd("colorscheme kanagawa")
+vim.cmd[[colorscheme tokyonight]]
 
 
 -- Lua line
 require('lualine').setup {
     options = {
-        theme = 'kanagawa',
         fmt = string.lower,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
