@@ -71,7 +71,6 @@ return require('packer').startup(function()
     use 'm-demare/hlargs.nvim' -- Highlight argument definitions and usages
     use 'nvim-lua/plenary.nvim' -- Collection of Lua functions
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
-    use 'puremourning/vimspector' -- Debugger
     use 'mfussenegger/nvim-dap' -- Debugger
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
