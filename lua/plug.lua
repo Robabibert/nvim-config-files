@@ -33,7 +33,11 @@ return require('packer').startup(function()
     }
     use 'lewis6991/impatient.nvim' -- Makes neovim faster
     use 'tpope/vim-surround' -- Add "", '', (),
+    use { 'phaazon/hop.nvim', branch = 'v2' } -- Navitage to any word in the file
+    use 'onsails/lspkind.nvim' -- shows icons in cmp
     use 'j-hui/fidget.nvim' -- sho status of nvim-lsp progress
+    use 'L3MON4D3/LuaSnip' -- snippets for completion
+    use 'saadparwaiz1/cmp_luasnip' -- snippets for completion'
     use {
         'goolord/alpha-nvim',
         config = function()
@@ -52,18 +56,25 @@ return require('packer').startup(function()
     use 'BurntSushi/ripgrep' -- Telescope grep
     use 'sharkdp/fd' -- Finder
     use 'neovim/nvim-lspconfig' -- Collection of common configurations for the Nvim LSP client
+    use 'hrsh7th/nvim-cmp' -- Completion framework
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp' -- LSP completion source for nvim-cmp
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-vsnip' -- Snippet completion source for nvim-cmp
+    use 'hrsh7th/cmp-path' -- Useful completion sources
+    use 'hrsh7th/cmp-buffer' -- Useful completion sources
     use 'simrat39/rust-tools.nvim' -- rust-analyzer hints and more!
     use 'saecki/crates.nvim' -- Help managing crates dependencies
     use 'hrsh7th/vim-vsnip' -- Snippet engine
     use 'nvim-lua/popup.nvim' -- Poup for telescope
     use 'nvim-treesitter/nvim-treesitter' -- better syntax
     use 'm-demare/hlargs.nvim' -- Highlight argument definitions and usages
+    use 'nvim-lua/plenary.nvim' -- Collection of Lua functions
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
     use 'mfussenegger/nvim-dap' -- Debugger
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     use "b0o/mapx.nvim" -- keymapping with filetype and whichley
-    use {'neoclide/coc.nvim', branch = 'release'}
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} } -- debugger ui
     use {
         "folke/which-key.nvim",
