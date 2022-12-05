@@ -32,6 +32,19 @@ RUN apt-get update \
     && mkdir -p ~/.config/nvim/ \
     && apt-get clean
 RUN npm install --global yarn
+# instakll nvm
+# nvm environment variables
+ENV NVM_DIR /root/.nvm
+
+# install nvm
+# https://github.com/creationix/nvm#install-script
+RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+# install node and npm
+RUN . $NVM_DIR/nvm.sh \
+    && nvm install 18 \
+    && nvm alias default 18 \
+    && nvm use default
 
 
 #install python dependencies
