@@ -5,16 +5,6 @@
 
 require('mapx').setup({ global = "force", whichkey = true })
 -- Also supports setting WhichKey group names
-nnoremap("<F5>", "<Cmd>lua require'dap'.continue()<CR>","silent",{ft="rust"})
-nnoremap("<F10>", "<Cmd>lua require'dap'.step_over()<CR>","silent",{ft="rust"})
-nnoremap("<F11>", "<Cmd>lua require'dap'.step_into()<CR>","silent",{ft="rust"})
-nnoremap("<F12>", "<Cmd>lua require'dap'.step_out()<CR>","silent",{ft="rust"})
-nnoremap("<Leader>E","<Cmd>lua require'dap'.set_exception_breakpoints({'rust_panic','cpp_throw','cpp_caught'},nil)<CR>","silent",{ft="rust"})--toggle exception breakpoints
-nnoremap("<Leader>b", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>","silent",{ft="rust"})
-nnoremap("<Leader>B", "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '),nil,nil)<CR>","silent",{ft="rust"})
-nnoremap("<Leader>lp", "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>","silent",{ft="rust"})
-nnoremap("<Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>","silent",{ft="rust"})
-nnoremap("<Leader>dl", "<Cmd>lua require'dap'.run_last()<CR>","silent",{ft="rust"})
 
 
 -- Rust Hover acions

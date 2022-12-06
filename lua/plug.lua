@@ -63,9 +63,13 @@ return require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter' -- better syntax
     use 'm-demare/hlargs.nvim' -- Highlight argument definitions and usages
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
-    use 'mfussenegger/nvim-dap' -- Debugger
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
+use {'mfussenegger/nvim-dap'}
+use {'nvim-telescope/telescope-dap.nvim'}
+use {'mfussenegger/nvim-dap-python'}
+use {'theHamsta/nvim-dap-virtual-text'}
+use {'Pocco81/DAPInstall.nvim'}
     use "b0o/mapx.nvim" -- keymapping with filetype and whichley
     use {'neoclide/coc.nvim', branch = 'release'}
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} } -- debugger ui

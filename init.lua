@@ -24,7 +24,7 @@ require('plug') -- Plugins
 require('vars') -- Variables
 require('opts') -- Options
 require('keys') -- Keymaps
-
+require("dbg")
 -- Color theme
 require("tokyonight").setup({
 	style= "storm"
