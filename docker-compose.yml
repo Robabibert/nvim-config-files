@@ -9,7 +9,8 @@ services:
       - "CAP_SYS_PTRACE"
         #    ports:
       #      - "1-65535:1-65535" #forward ALL ports
-      
+    ports:
+      - 3000:3000
     security_opt:
       - seccomp:unconfined
     volumes:
