@@ -46,7 +46,8 @@ RUN . $NVM_DIR/nvm.sh \
     && nvm alias default 18 \
     && nvm use default
 
-
+# install typescript language server
+RUN npm install -g typescript typescript-language-server
 #install python dependencies
 RUN apt-get install python3 python3-dev python3-pip -y
 RUN pip3 install neovim
