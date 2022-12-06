@@ -40,6 +40,10 @@ return require('packer').startup(function()
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
+    
+  use 'princejoogie/tailwind-highlight.nvim'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
     use 'RRethy/vim-illuminate' -- Highlight other uses of word under cursor
     use "lukas-reineke/indent-blankline.nvim" -- ident lines
     use 'numToStr/Comment.nvim' -- Enable comments
