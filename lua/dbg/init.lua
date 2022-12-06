@@ -38,5 +38,6 @@ utils.map('n', '<leader>dv',
           '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
 utils.map('n', '<leader>df',
           '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
+utils.map('n',"<Leader>D", "<Cmd>lua require('dapui').toggle()<CR>")--toggle debug ui
 -- nvim-dap-virtual-text. Show virtual text for current frame
 vim.g.dap_virtual_text = true
