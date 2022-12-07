@@ -375,12 +375,6 @@ require 'lspconfig'.texlab.setup {
 require 'lspconfig'.marksman.setup {
 }
 
-
-
-
-
-
-
 ----------------------------------------
 -- TREE-SITTER Setup                ----
 ----------------------------------------

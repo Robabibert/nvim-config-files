@@ -1,11 +1,11 @@
 --[[ keys.lua ]]
-
 -- Functional wrapper for mapping custom keybindings
 -- mode (as in Vim modes like Normal/Insert mode)
 -- lhs (the custom keybinds you need)
 -- rhs (the commands or existing keybinds to customise)
 -- opts (additional options like <silent>/<noremap>, see :h map-arguments for more info on it)
 
+require("languages.rust")
 local utils=require("utils")
 
 
@@ -25,15 +25,15 @@ utils.map("n", "qa", ":qa<cr>")
 
 vim.cmd([[
 " " Copy to clipboard
-vnore.map  <leader>y  "+y
-nnore.map  <leader>Y  "+yg_
-nnore.map  <leader>y  "+y
-nnore.map  <leader>yy  "+yy
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
 " " Paste from clipboard
-nnore.map <leader>p "+p
-nnore.map <leader>P "+P
-vnore.map <leader>p "+p
-vnore.map <leader>P "+P
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 ]])
 
 -- Save and exit
@@ -139,6 +139,5 @@ vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
 vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
 
 -- .mappings and config for rust language 
-require("languages.rust")
 
 

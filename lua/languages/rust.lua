@@ -3,54 +3,46 @@
 
 -- keybindings
 
-require('mapx').setup({ global = "force", whichkey = true })
--- Also supports setting WhichKey group names
 
 
 -- Rust Hover acions
-nnoremap("<C-space>","<Cmd>RustHoverActions<CR>",{ft="rust"})
 
 
-
+local utils=require("utils")
 -- LSP Navigation
 -- Code Actions
-vim.cmd([[
-nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gi        <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gc        <cmd>lua vim.lsp.buf.incoming_calls()<CR>
-nnoremap <silent> gd        <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr        <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gn        <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> gs        <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gw        <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-]])
+utils.map("n","<C-space>",  ":RustHoverActions<cr>")
+utils.map("n", "<c-]>",     ":lua vim.lsp.buf.definition()<cr>")
+utils.map("n", "<c-k>",     ":lua vim.lsp.buf.signature_help()<cr>")
+utils.map("n", "K",         ":lua vim.lsp.buf.hover()<cr>")
+utils.map("n", "gi",        ":lua vim.lsp.buf.implementation()<cr>")
+utils.map("n", "gc",        ":lua vim.lsp.buf.incoming_calls()<cr>")
+utils.map("n", "gd",        ":lua vim.lsp.buf.type_definition()<cr>")
+utils.map("n", "gr",        ":lua vim.lsp.buf.references()<cr>")
+utils.map("n", "gn",        ":lua vim.lsp.buf.rename()<cr>")
+utils.map("n", "gs",        ":lua vim.lsp.buf.document_symbol()<cr>")
+utils.map("n", "gw",        ":lua vim.lsp.buf.workspace_symbol()<cr>")
 
-vim.cmd([[
-nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
-]])
+utils.map("n", "g[",        ":lua vim.diagnostic.goto_prev()<cr>")
+utils.map("n", "g]",        ":lua vim.diagnostic.goto_next()<cr>")
 
 
 -- Crates Nvim
-vim.cmd([[
-nnoremap <silent> <leader>ct :lua require('crates').toggle()<cr>
-nnoremap <silent> <leader>cr :lua require('crates').reload()<cr>
+utils.map("n", "<leader>ct", ":lua require('crates').toggle()<cr>")
+utils.map("n", "<leader>cr", ":lua require('crates').reload()<cr>")
 
-nnoremap <silent> <leader>cv :lua require('crates').show_versions_popup()<cr>
-nnoremap <silent> <leader>cf :lua require('crates').show_features_popup()<cr>
-nnoremap <silent> <leader>cd :lua require('crates').show_dependencies_popup()<cr>
+utils.map("n", "<leader>cv", ":lua require('crates').show_versions_popup()<cr>")
+utils.map("n", "<leader>cf", ":lua require('crates').show_features_popup()<cr>")
+utils.map("n", "<leader>cd", ":lua require('crates').show_dependencies_popup()<cr>")
 
-nnoremap <silent> <leader>cu :lua require('crates').update_crate()<cr>
-vnoremap <silent> <leader>cu :lua require('crates').update_crates()<cr>
-nnoremap <silent> <leader>ca :lua require('crates').update_all_crates()<cr>
-nnoremap <silent> <leader>cU :lua require('crates').upgrade_crate()<cr>
-vnoremap <silent> <leader>cU :lua require('crates').upgrade_crates()<cr>
-nnoremap <silent> <leader>cA :lua require('crates').upgrade_all_crates()<cr>
+utils.map("n", "<leader>cu", ":lua require('crates').update_crate()<cr>")
+utils.map("n", "<leader>cu", ":lua require('crates').update_crates()<cr>")
+utils.map("n", "<leader>ca", ":lua require('crates').update_all_crates()<cr>")
+utils.map("n", "<leader>cU", ":lua require('crates').upgrade_crate()<cr>")
+utils.map("n", "<leader>cU", ":lua require('crates').upgrade_crates()<cr>")
+utils.map("n", "<leader>cA", ":lua require('crates').upgrade_all_crates()<cr>")
 
-nnoremap <silent> <leader>cH :lua require('crates').open_homepage()<cr>
-nnoremap <silent> <leader>cR :lua require('crates').open_repository()<cr>
-nnoremap <silent> <leader>cD :lua require('crates').open_documentation()<cr>
-nnoremap <silent> <leader>cC :lua require('crates').open_crates_io()<cr>
-]])
+utils.map("n", "<leader>cH", ":lua require('crates').open_homepage()<cr>")
+utils.map("n", "<leader>cR", ":lua require('crates').open_repository()<cr>")
+utils.map("n", "<leader>cD", ":lua require('crates').open_documentation()<cr>")
+utils.map("n", "<leader>cC", ":lua require('crates').open_crates_io()<cr>")

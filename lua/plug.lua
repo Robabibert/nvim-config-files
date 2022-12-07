@@ -70,7 +70,6 @@ use {'nvim-telescope/telescope-dap.nvim'}
 use {'mfussenegger/nvim-dap-python'}
 use {'theHamsta/nvim-dap-virtual-text'}
 use {'Pocco81/DAPInstall.nvim'}
-    use "b0o/mapx.nvim" -- keymapping with filetype and whichley
     use {'neoclide/coc.nvim', branch = 'release'}
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} } -- debugger ui
     use {
