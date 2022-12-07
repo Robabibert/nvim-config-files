@@ -40,6 +40,8 @@ return require('packer').startup(function()
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
+        use 'L3MON4D3/LuaSnip' -- snippets for completion
+    use 'saadparwaiz1/cmp_luasnip' -- snippets for completion'
     use { 'phaazon/hop.nvim', branch = 'v2' } -- Navitage to any word in the file
     use 'lukas-reineke/headlines.nvim' -- highlights headlines for markdown, other txt files
     use 'jose-elias-alvarez/null-ls.nvim' -- Use Vale as a prose linter
