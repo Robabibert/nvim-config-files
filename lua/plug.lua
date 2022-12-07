@@ -40,6 +40,9 @@ return require('packer').startup(function()
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
+    use { 'phaazon/hop.nvim', branch = 'v2' } -- Navitage to any word in the file
+    use 'lukas-reineke/headlines.nvim' -- highlights headlines for markdown, other txt files
+    use 'jose-elias-alvarez/null-ls.nvim' -- Use Vale as a prose linter
     use 'hrsh7th/nvim-cmp' -- Completion framework
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp' -- LSP completion source for nvim-cmp
