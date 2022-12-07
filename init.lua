@@ -21,10 +21,10 @@ hi ColorColumn guifg=NONE guibg=#204563 gui=NONE
 
 -- IMPORTS
 require('plug') -- Plugins
+require("dbg") --debug configurations
 require('vars') -- Variables
 require('opts') -- Options
 require('keys') -- Keymaps
-require("dbg")
 -- Color theme
 require("tokyonight").setup({
 	style= "storm"
@@ -107,22 +107,6 @@ require 'FTerm'.setup({
 vim.keymap.set('n', 't', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
-
--- null-ls for Vale, Selene and Markdown linters
---require("null-ls").setup({
---    sources = {
---        require("null-ls").builtins.diagnostics.vale,
---        require("null-ls").builtins.diagnostics.selene,
---        require("null-ls").builtins.diagnostics.markdownlint.with({
---            diagnostics_format = "[#{c}] #{m} (#{s})",
---            filter = function(diagnostic)
---                return diagnostic.code ~= "MD013/line-length"
---            end,
---        }),
---    },
---})
-
-
 -- Fidget - show status of LSP progress
 require "fidget".setup {
     window = {
@@ -130,17 +114,6 @@ require "fidget".setup {
         blend = 10,
     },
 }
-
-
--- Vale prose lint
---require("null-ls").setup({
---    sources = {
---        require("null-ls").builtins.diagnostics.vale,
---    },
---})
-
-
--- Hop
 
 
 -- Ident Lines
@@ -294,86 +267,6 @@ local nvim_lsp = require('lspconfig')
 -- RUST
 -- -------------------------------------
 
-local extension_path = '/codelldb/extension/'
-local codelldb_path = extension_path .. 'adapter/codelldb'
-local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
-
-local rt = require("rust-tools")
-rt.setup({
-    dap = {
-        adapter = require('rust-tools.dap').get_codelldb_adapter(
-            codelldb_path, liblldb_path)
-    },
-    server = {
-        on_attach = function(_, bufnr)
-            -- Code action groups
-            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-        end,
-    }
-})
-
-
-
-
-
--- LUA
--- -------------------------------------
-require 'lspconfig'.sumneko_lua.setup {
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'Lua 5.4',
-                path = {
-                    '?.lua',
-                    '?/init.lua',
-                    vim.fn.expand '~/.luarocks/share/lua/5.4/?.lua',
-                    vim.fn.expand '~/.luarocks/share/lua/5.4/?/init.lua',
-                    '/usr/share/5.4/?.lua',
-                    '/usr/share/lua/5.4/?/init.lua'
-                }
-            },
-            workspace = {
-                library = {
-                    vim.fn.expand '~/.luarocks/share/lua/5.4',
-                    '/usr/share/lua/5.4'
-                }
-            }
-        }
-    }
-}
-
-
--- LatEx with TexLab
-require 'lspconfig'.texlab.setup {
-    texlab = {
-        auxDirectory = ".",
-        bibtexFormatter = "texlab",
-        build = {
-            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-            executable = "latexmk",
-            forwardSearchAfter = false,
-            onSave = false
-        },
-        chktex = {
-            onEdit = false,
-            onOpenAndSave = false
-        },
-        diagnosticsDelay = 300,
-        formatterLineLength = 80,
-        forwardSearch = {
-            args = {}
-        },
-        latexFormatter = "latexindent",
-        latexindent = {
-            modifyLineBreaks = false
-        }
-    }
-}
-
-
--- Marksman
-require 'lspconfig'.marksman.setup {
-}
 
 ----------------------------------------
 -- TREE-SITTER Setup                ----
@@ -561,3 +454,266 @@ require("dapui").setup({
       max_value_lines = 100, -- Can be integer or nil.
     }
   })
+
+local extension_path = '/codelldb/extension/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+local opts = {
+  tools = { -- rust-tools options
+
+    -- how to execute terminal commands
+    -- options right now: termopen / quickfix
+    executor = require("rust-tools.executors").termopen,
+
+    -- callback to execute once rust-analyzer is done initializing the workspace
+    -- The callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
+    on_initialized = nil,
+
+    -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
+    reload_workspace_from_cargo_toml = true,
+
+    -- These apply to the default RustSetInlayHints command
+    inlay_hints = {
+      -- automatically set inlay hints (type hints)
+      -- default: true
+      auto = true,
+
+      -- Only show inlay hints for the current line
+      only_current_line = false,
+
+      -- whether to show parameter hints with the inlay hints or not
+      -- default: true
+      show_parameter_hints = true,
+
+      -- prefix for parameter hints
+      -- default: "<-"
+      parameter_hints_prefix = "<- ",
+
+      -- prefix for all the other hints (type, chaining)
+      -- default: "=>"
+      other_hints_prefix = "=> ",
+
+      -- whether to align to the length of the longest line in the file
+      max_len_align = false,
+
+      -- padding from the left if max_len_align is true
+      max_len_align_padding = 1,
+
+      -- whether to align to the extreme right or not
+      right_align = false,
+
+      -- padding from the right if right_align is true
+      right_align_padding = 7,
+
+      -- The color of the hints
+      highlight = "Comment",
+    },
+
+    -- options same as lsp hover / vim.lsp.util.open_floating_preview()
+    hover_actions = {
+
+      -- the border that is used for the hover window
+      -- see vim.api.nvim_open_win()
+      border = {
+        { "╭", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╮", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "╯", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╰", "FloatBorder" },
+        { "│", "FloatBorder" },
+      },
+
+      -- Maximal width of the hover window. Nil means no max.
+      max_width = nil,
+
+      -- Maximal height of the hover window. Nil means no max.
+      max_height = nil,
+
+      -- whether the hover action window gets automatically focused
+      -- default: false
+      auto_focus = false,
+    },
+
+    -- settings for showing the crate graph based on graphviz and the dot
+    -- command
+    crate_graph = {
+      -- Backend used for displaying the graph
+      -- see: https://graphviz.org/docs/outputs/
+      -- default: x11
+      backend = "x11",
+      -- where to store the output, nil for no output stored (relative
+      -- path from pwd)
+      -- default: nil
+      output = nil,
+      -- true for all crates.io and external crates, false only the local
+      -- crates
+      -- default: true
+      full = true,
+
+      -- List of backends found on: https://graphviz.org/docs/outputs/
+      -- Is used for input validation and autocompletion
+      -- Last updated: 2021-08-26
+      enabled_graphviz_backends = {
+        "bmp",
+        "cgimage",
+        "canon",
+        "dot",
+        "gv",
+        "xdot",
+        "xdot1.2",
+        "xdot1.4",
+        "eps",
+        "exr",
+        "fig",
+        "gd",
+        "gd2",
+        "gif",
+        "gtk",
+        "ico",
+        "cmap",
+        "ismap",
+        "imap",
+        "cmapx",
+        "imap_np",
+        "cmapx_np",
+        "jpg",
+        "jpeg",
+        "jpe",
+        "jp2",
+        "json",
+        "json0",
+        "dot_json",
+        "xdot_json",
+        "pdf",
+        "pic",
+        "pct",
+        "pict",
+        "plain",
+        "plain-ext",
+        "png",
+        "pov",
+        "ps",
+        "ps2",
+        "psd",
+        "sgi",
+        "svg",
+        "svgz",
+        "tga",
+        "tiff",
+        "tif",
+        "tk",
+        "vml",
+        "vmlz",
+        "wbmp",
+        "webp",
+        "xlib",
+        "x11",
+      },
+    },
+  },
+
+  -- all the opts to send to nvim-lspconfig
+  -- these override the defaults set by rust-tools.nvim
+  -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+  server = {
+    -- standalone file support
+    -- setting it to false may improve startup time
+    standalone = true,
+  }, -- rust-analyzer options
+
+  -- debugging stuff
+   dap = {
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+            codelldb_path, liblldb_path)
+  },
+}
+
+require('rust-tools').setup(opts)
+
+
+
+
+
+----------------------------------------
+-- COMPLETION Setup                 ----
+----------------------------------------
+
+require('lspkind').init({
+    -- mode = 'symbol_text'
+})
+
+
+vim.opt.completeopt = { 'menuone', 'noselect', 'noinsert' }
+vim.opt.shortmess = vim.opt.shortmess + { c = true }
+vim.api.nvim_set_option('updatetime', 350)
+
+local lspkind = require('lspkind')
+local cmp = require 'cmp'
+
+cmp.setup({
+    -- Enable LSP snippets
+    snippet = {
+        expand = function(args)
+            -- vim.fn["vsnip#anonymous"](args.body) -- For 'vsnip' users.
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        end,
+    },
+    mapping = {
+        -- Add tab support
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<C-S-f>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm { select = false }
+    },
+    -- Installed sources:
+    sources = {
+        { name = 'path' }, -- file paths
+        { name = 'nvim_lsp', keyword_length = 1, priority = 10 }, -- from language server
+        { name = 'crates', keyword_length = 1, priority = 10 },
+        { name = 'luasnip', keyword_length = 1, priority = 7 }, -- for lua users
+        { name = 'nvim_lsp_signature_help', priority = 8 }, -- display function signatures with current parameter emphasized
+        { name = 'nvim_lua', keyword_length = 1, priority = 8 }, -- complete neovim's Lua runtime API such vim.lsp.*
+        { name = 'buffer', keyword_length = 1, priority = 5 }, -- source current buffer
+        -- { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip
+        { name = 'calc' }, -- source for math calculation
+    },
+    window = {
+        completion = {
+            cmp.config.window.bordered(),
+            col_offset = 3,
+            side_padding = 1,
+        },
+        documentation = cmp.config.window.bordered(),
+
+    },
+    formatting = {
+        fields = { 'menu', 'abbr', 'kind' },
+        format = lspkind.cmp_format({
+            mode = 'symbol_text', -- show only symbol annotations
+            maxwidth = 60, -- prevent the popup from showing more than provided characters
+            -- The function below will be called before any actual modifications from lspkind:
+            before = function(entry, vim_item)
+                local menu_icon = {
+                    nvim_lsp = 'λ ',
+                    luasnip = '⋗ ',
+                    buffer = 'Ω ',
+                    path = '🖫 ',
+                }
+                vim_item.menu = menu_icon[entry.source.name]
+                return vim_item
+            end,
+        })
+
+    },
+    preselect = cmp.PreselectMode.None,
+    confirmation = {
+        get_commit_characters = function(commit_characters)
+            return {}
+        end
+    },
+})

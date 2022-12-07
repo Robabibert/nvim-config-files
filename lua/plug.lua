@@ -40,10 +40,19 @@ return require('packer').startup(function()
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
-    
-  use 'princejoogie/tailwind-highlight.nvim'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/nvim-cmp' -- Completion framework
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp' -- LSP completion source for nvim-cmp
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-vsnip' -- Snippet completion source for nvim-cmp
+    use 'hrsh7th/cmp-path' -- Useful completion sources
+    use 'hrsh7th/cmp-buffer' -- Useful completion sources
+    use 'onsails/lspkind.nvim' -- shows icons in cmp    
+    use 'neovim/nvim-lspconfig' -- Collection of common configurations for the Nvim LSP client
+    use 'simrat39/rust-tools.nvim' -- rust-analyzer hints and more!
+    use 'princejoogie/tailwind-highlight.nvim'
+    --use 'hrsh7th/nvim-cmp'
+    --use 'hrsh7th/cmp-nvim-lsp'
     use 'RRethy/vim-illuminate' -- Highlight other uses of word under cursor
     use "lukas-reineke/indent-blankline.nvim" -- ident lines
     use 'numToStr/Comment.nvim' -- Enable comments
@@ -55,21 +64,19 @@ return require('packer').startup(function()
     use 'numToStr/FTerm.nvim' -- Terminal in Lu-a
     use 'BurntSushi/ripgrep' -- Telescope grep
     use 'sharkdp/fd' -- Finder
-    use 'neovim/nvim-lspconfig' -- Collection of common configurations for the Nvim LSP client
-    use 'simrat39/rust-tools.nvim' -- rust-analyzer hints and more!
     use 'saecki/crates.nvim' -- Help managing crates dependencies
-    use 'hrsh7th/vim-vsnip' -- Snippet engine
+    --use 'hrsh7th/vim-vsnip' -- Snippet engine
     use 'nvim-lua/popup.nvim' -- Poup for telescope
     use 'nvim-treesitter/nvim-treesitter' -- better syntax
     use 'm-demare/hlargs.nvim' -- Highlight argument definitions and usages
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
-use {'mfussenegger/nvim-dap'}
-use {'nvim-telescope/telescope-dap.nvim'}
-use {'mfussenegger/nvim-dap-python'}
-use {'theHamsta/nvim-dap-virtual-text'}
-use {'Pocco81/DAPInstall.nvim'}
+    use {'mfussenegger/nvim-dap'}
+    use {'nvim-telescope/telescope-dap.nvim'}
+    use {'mfussenegger/nvim-dap-python'}
+    use {'theHamsta/nvim-dap-virtual-text'}
+    use {'Pocco81/DAPInstall.nvim'}
     use {'neoclide/coc.nvim', branch = 'release'}
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} } -- debugger ui
     use {
