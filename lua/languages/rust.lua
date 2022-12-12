@@ -14,7 +14,6 @@ require'mapx'.setup{ global = true }
 -- Code Actions
 nnoremap("<C-space>",  ":RustHoverActions<cr>","silent",{ft="rust"})
 nnoremap("<c-]>",     ":lua vim.lsp.buf.definition()<cr>",'silent',{ft='rust'})
-nnoremap("<c-k>",     ":lua vim.lsp.buf.signature_help()<cr>",'silent',{ft='rust'})
 nnoremap("K",         ":lua vim.lsp.buf.hover()<cr>",'silent',{ft='rust'})
 nnoremap("gi",        ":lua vim.lsp.buf.implementation()<cr>",'silent',{ft='rust'})
 nnoremap("gc",        ":lua vim.lsp.buf.incoming_calls()<cr>",'silent',{ft='rust'})
