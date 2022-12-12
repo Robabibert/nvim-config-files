@@ -12,7 +12,7 @@ require'mapx'.setup{ global = true }
 
 -- LSP Navigation
 -- Code Actions
-
+nnoremap("<C-space>",  ":RustHoverActions<cr>","silent",{ft="rust"})
 nnoremap("<c-]>",     ":lua vim.lsp.buf.definition()<cr>",'silent',{ft='rust'})
 nnoremap("<c-k>",     ":lua vim.lsp.buf.signature_help()<cr>",'silent',{ft='rust'})
 nnoremap("K",         ":lua vim.lsp.buf.hover()<cr>",'silent',{ft='rust'})
