@@ -13,6 +13,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require('packer').startup(function()
+    use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim' -- colorscheme
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
