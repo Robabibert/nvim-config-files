@@ -59,7 +59,7 @@ RUN rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
 RUN rustup component add rustfmt
 
 ##get rust-analyzer and make it executable
-RUN curl -L -o rust-analyzer-x86_64-unknown-linux-gnu.gz https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-x86_64-unknown-linux-gnu.gz \
+RUN curl -L -o rust-analyzer-x86_64-unknown-linux-gnu.gz https://github.com/rust-analyzer/rust-analyzer/releases/download/stable/rust-analyzer-x86_64-unknown-linux-gnu.gz \
     && gzip -d rust-analyzer-x86_64-unknown-linux-gnu.gz \
     && mkdir -p ~/.local/bin \
     && mv rust-analyzer-x86_64-unknown-linux-gnu ~/.local/bin/rust-analyzer \
