@@ -23,7 +23,6 @@ RUN apt-get update \
     #get fish terminal
     && apt-get install fish -y\
     # Setup latest vim with vim-plug
-    && apt-get install -y vim \
     && curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     # Setup latest neovim with vim-plug
@@ -45,40 +44,11 @@ RUN . $NVM_DIR/nvm.sh \
     && nvm install 18 \
     && nvm alias default 18 \
     && nvm use default
-
-# install typescript language server
-RUN npm install -g typescript typescript-language-server
-#install python dependencies
-RUN apt-get install python3 python3-dev python3-pip -y
-RUN pip3 install neovim
-
-RUN rustup default nightly
-RUN rustup component add rls --toolchain nightly-x86_64-unknown-linux-gnu 
-RUN rustup component add rust-analysis --toolchain nightly-x86_64-unknown-linux-gnu 
-RUN rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
-RUN rustup component add rustfmt
-
-##get rust-analyzer and make it executable
-RUN curl -L -o rust-analyzer-x86_64-unknown-linux-gnu.gz https://github.com/rust-analyzer/rust-analyzer/releases/download/2022-12-19/rust-analyzer-x86_64-unknown-linux-gnu.gz \
-    && gzip -d rust-analyzer-x86_64-unknown-linux-gnu.gz \
-    && mkdir -p ~/.local/bin \
-    && mv rust-analyzer-x86_64-unknown-linux-gnu ~/.local/bin/rust-analyzer \
-    && chmod +x ~/.local/bin/rust-analyzer 
-
-
-ENV PATH=$PATH:/root/.local/bin
 FROM base as nvim
 
 RUN mkdir -p /root/.config/nvim
 
-#Get codelldb
-RUN mkdir -p /codelldb
-RUN curl -L -o /codelldb/codelldb-x86_64-linux.vsix https://github.com/vadimcn/vscode-lldb/releases/download/v1.8.1/codelldb-x86_64-linux.vsix 
-RUN unzip /codelldb/codelldb-x86_64-linux.vsix -d /codelldb
-RUN rm /codelldb/codelldb-x86_64-linux.vsix
-
 #Get vale for markdown_preview
-
 WORKDIR /root/.local/bin
 RUN wget https://github.com/errata-ai/vale/releases/download/v2.21.1/vale_2.21.1_checksums.txt
 RUN wget https://github.com/errata-ai/vale/releases/download/v2.21.1/vale_2.21.1_Linux_64-bit.tar.gz 
@@ -116,6 +86,4 @@ FROM nvim as development
 #disable ASLR for debugging with lldb
 #RUN echo 0  > /proc/sys/kernel/randomize_va_space
 
-#allow rust backtrace
-ENV RUST_BACKTRACE=full
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
