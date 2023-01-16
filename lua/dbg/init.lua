@@ -9,7 +9,7 @@ utils.map('n', '<leader>dsv', '<cmd>lua require"dap".step_over()<CR>')
 utils.map('n', '<leader>dsi', '<cmd>lua require"dap".step_into()<CR>')
 utils.map('n', '<leader>dso', '<cmd>lua require"dap".step_out()<CR>')
 utils.map('n', '<leader>dtb', '<cmd>lua require"dap".toggle_breakpoint()<CR>')
-utils.map('n', '<leader>dte', '<cmd>lua require"dap".set_exception_breakpoints()<CR>')
+utils.map('n', '<leader>dte', '<Cmd>lua require"dap".set_exception_breakpoints({'rust_panic','cpp_throw','cpp_caught'},nil)<CR>')
 
 utils.map('n', '<leader>dsc', '<cmd>lua require"dap.ui.variables".scopes()<CR>')
 utils.map('n', '<leader>dhh', '<cmd>lua require"dap.ui.variables".hover()<CR>')
