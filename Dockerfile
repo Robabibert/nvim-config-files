@@ -42,8 +42,8 @@ RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/master/in
 
 # install node and npm
 RUN . $NVM_DIR/nvm.sh \
-    && nvm install 18 \
-    && nvm alias default 18 \
+    && nvm install 19.4 \
+    && nvm alias default 19.4 \
     && nvm use default
 
 # install typescript language server
