@@ -72,10 +72,10 @@ FROM base as nvim
 RUN mkdir -p /root/.config/nvim
 
 #Get codelldb
-RUN mkdir -p /codelldb
-RUN curl -L -o /codelldb/codelldb-x86_64-linux.vsix https://github.com/vadimcn/vscode-lldb/releases/download/v1.8.1/codelldb-x86_64-linux.vsix 
-RUN unzip /codelldb/codelldb-x86_64-linux.vsix -d /codelldb
-RUN rm /codelldb/codelldb-x86_64-linux.vsix
+RUN mkdir -p /root/.local/bin/codelldb
+RUN curl -L -o /root/.local/bin/ccodelld/bodelldb-x86_64-linux.vsix https://github.com/vadimcn/vscode-lldb/releases/download/v1.8.1/codelldb-x86_64-linux.vsix 
+RUN unzip /root/.local/bin/codelldb-x86_64-linux.vsix -d /root/.local/bin/codelldb
+RUN rm /root/.local/bin/codelldb/codelldb-x86_64-linux.vsix
 
 #Get vale for markdown_preview
 
