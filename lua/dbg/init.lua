@@ -1,7 +1,5 @@
 require('telescope').load_extension('dap')
 require('dbg.python')
-require('dbg.typescriptreact')
-require('dbg.rust')
 local utils = require('utils')
 
 utils.map('n', '<leader>dct', '<cmd>lua require"dap".continue()<CR>')

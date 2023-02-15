@@ -4,7 +4,6 @@
 -- lhs (the custom keybinds you need)
 -- rhs (the commands or existing keybinds to customise)
 -- opts (additional options like <silent>/<noremap>, see :h map-arguments for more info on it)
-require("languages/rust")
 local utils=require("utils")
 
 
