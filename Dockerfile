@@ -50,6 +50,8 @@ COPY spell /root/.config/nvim/spell
 COPY init.lua /root/.config/nvim/
 COPY .luarc.json /root/.config/nvim/.luarc.json
 
+COPY ./../requirements.txt /
+RUN pip install -r /requirements.txt
 
 #get packer
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -62,7 +64,5 @@ RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 FROM nvim as development
 
-#disable ASLR for debugging with lldb
-#RUN echo 0  > /proc/sys/kernel/randomize_va_space
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
