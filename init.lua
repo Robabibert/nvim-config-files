@@ -22,6 +22,7 @@ hi ColorColumn guifg=NONE guibg=#204563 gui=NONE
 -- IMPORTS
 require('plug') -- Plugins
 require('dbg') -- Plugins
+require('languages') -- Plugins
 require('vars') -- Variables
 require('opts') -- Options
 require('keys') -- Keymaps

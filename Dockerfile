@@ -32,6 +32,8 @@ RUN apt-get update \
     && mkdir -p ~/.config/nvim/ \
     && apt-get clean
 RUN npm install --global yarn
+#language server for python
+RUN npm install --global pyright
 # instakll nvm
 # nvm environment variables
 ENV NVM_DIR /root/.nvm
@@ -50,7 +52,12 @@ RUN . $NVM_DIR/nvm.sh \
 RUN npm install -g typescript typescript-language-server
 #install python dependencies
 RUN apt-get install python3 python3-dev python3-pip -y
-RUN pip3 install neovim
+#install python debugger
+WORKDIR ~/
+RUN mkdir .virtualenvs
+WORKDIR ~/.virtualenvs
+RUN python -m venv debugpy
+RUN debugpy/bin/python -m pip install debugpy
 
 RUN rustup default nightly
 RUN rustup component add rls --toolchain nightly-x86_64-unknown-linux-gnu 
@@ -73,7 +80,7 @@ RUN mkdir -p /root/.config/nvim
 
 #Get codelldb
 RUN mkdir -p /root/.local/bin/codelldb
-RUN curl -L -o /root/.local/bin/ccodelld/bodelldb-x86_64-linux.vsix https://github.com/vadimcn/vscode-lldb/releases/download/v1.8.1/codelldb-x86_64-linux.vsix 
+RUN curl -L -o /root/.local/bin/codelld/bodelldb-x86_64-linux.vsix https://github.com/vadimcn/vscode-lldb/releases/download/v1.8.1/codelldb-x86_64-linux.vsix 
 RUN unzip /root/.local/bin/codelldb-x86_64-linux.vsix -d /root/.local/bin/codelldb
 RUN rm /root/.local/bin/codelldb/codelldb-x86_64-linux.vsix
 
