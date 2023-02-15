@@ -1,1 +1,1 @@
-require'dap'.set_exception_breakpoints({"panic"})
+require'dap'.set_exception_breakpoints({"rust_panic"})
