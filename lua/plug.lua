@@ -20,6 +20,7 @@ return require('packer').startup(function()
         requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
         -- wants = { "vim-rhubarb" },
     }
+    use {"mfussenegger/nvim-jdtls", ft={"java"}}
     use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim'
