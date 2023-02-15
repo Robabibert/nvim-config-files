@@ -10,7 +10,6 @@ local ensure_packer = function()
     return false
 end
 
-
 local packer_bootstrap = ensure_packer()
 return require('packer').startup(function()
     use {
@@ -20,7 +19,6 @@ return require('packer').startup(function()
         requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
         -- wants = { "vim-rhubarb" },
     }
-    use {"mfussenegger/nvim-jdtls", ft={"java"}}
     use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim'
@@ -63,7 +61,7 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-buffer' -- Useful completion sources
     use 'onsails/lspkind.nvim' -- shows icons in cmp
     use 'neovim/nvim-lspconfig' -- Collection of common configurations for the Nvim LSP client
-    use 'simrat39/rust-tools.nvim' -- rust-analyzer hints and more!
+    use 'simrat39/rust-tools.nvim' -- rust-analyzer hints and more!pl
     use 'princejoogie/tailwind-highlight.nvim'
     --use 'hrsh7th/nvim-cmp'
     --use 'hrsh7th/cmp-nvim-lsp'
@@ -86,7 +84,10 @@ return require('packer').startup(function()
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
-    use { 'mfussenegger/nvim-dap' }
+    -- Debugging
+use {
+  "mfussenegger/nvim-dap",
+}
     use { 'nvim-telescope/telescope-dap.nvim' }
     use { 'mfussenegger/nvim-dap-python' }
     use { 'theHamsta/nvim-dap-virtual-text' }

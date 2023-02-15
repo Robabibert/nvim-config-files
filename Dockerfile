@@ -52,7 +52,7 @@ COPY .luarc.json /root/.config/nvim/.luarc.json
 
 COPY ./../requirements.txt /
 RUN pip install -r /requirements.txt
-
+RUN pip install debugpy
 #get packer
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
     /root/.local/share/nvim/site/pack/packer/start/packer.nvim
