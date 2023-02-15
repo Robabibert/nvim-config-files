@@ -1,4 +1,4 @@
-FROM rust as base
+FROM rust as basedock
 
 USER root
 ENV USER=root
