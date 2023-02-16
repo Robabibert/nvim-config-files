@@ -86,6 +86,7 @@ return require('packer').startup(function()
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
+    use "sansyrox/vim-python-virtualenv"
     use { 'mfussenegger/nvim-dap' }
     use { 'nvim-telescope/telescope-dap.nvim' }
     use { 'mfussenegger/nvim-dap-python' }
@@ -107,10 +108,10 @@ return require('packer').startup(function()
 
 
     -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    --use({
+    --    "iamcco/markdown-preview.nvim",
+    --    run = function() vim.fn["mkdp#util#install"]() end,
+    --})
 
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
