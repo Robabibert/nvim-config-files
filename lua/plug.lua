@@ -20,6 +20,17 @@ return require('packer').startup(function()
         requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
         -- wants = { "vim-rhubarb" },
     }
+  use {
+      "nvim-neotest/neotest-python"
+  }  
+    use {
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim"
+      }
+    }
     use {"mfussenegger/nvim-jdtls", ft={"java"}}
     use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'

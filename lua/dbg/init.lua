@@ -3,7 +3,7 @@ require('dbg.python')
 require('dbg.typescriptreact')
 require('dbg.rust')
 local utils = require('utils')
-
+utils.map('n','<leader>dtt','<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>')--debug nearest test
 utils.map('n', '<leader>dct', '<cmd>lua require"dap".continue()<CR>')
 utils.map('n', '<leader>dsv', '<cmd>lua require"dap".step_over()<CR>')
 utils.map('n', '<leader>dsi', '<cmd>lua require"dap".step_into()<CR>')

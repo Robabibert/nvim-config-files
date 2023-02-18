@@ -44,6 +44,10 @@ utils.map("n", "<C-j>", "<C-w>j<C-w>")
 utils.map("n", "<C-h>", "<C-w>h<C-w>")
 utils.map("n", "<C-k>", "<C-w>k<C-w>")
 utils.map("n", "<C-l>", "<C-w>l<C-w>")
+-- Tab navigation
+utils.map("n", "<leader>tn", ":tabnew<CR>")
+utils.map("n", "<leader>ts", ":tabn<CR>")
+
 
 -- Hop
 utils.map("n", "HH", ":HopWord<cr>")
