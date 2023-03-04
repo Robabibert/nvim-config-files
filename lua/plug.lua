@@ -7,7 +7,7 @@ local ensure_packer = function()
         vim.cmd [[packadd packer.nvim]]
         return true
     end
-    return false
+    return falseplu
 end
 
 
@@ -20,18 +20,19 @@ return require('packer').startup(function()
         requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
         -- wants = { "vim-rhubarb" },
     }
-  use {
-      "nvim-neotest/neotest-python"
-  }  
+    use "folke/neodev.nvim"
     use {
-      "nvim-neotest/neotest",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "antoinemadec/FixCursorHold.nvim"
-      }
+        "nvim-neotest/neotest-python"
     }
-    use {"mfussenegger/nvim-jdtls", ft={"java"}}
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim"
+        }
+    }
+    use { "mfussenegger/nvim-jdtls", ft = { "java" } }
     use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim'
@@ -104,7 +105,9 @@ return require('packer').startup(function()
     use { 'theHamsta/nvim-dap-virtual-text' }
     use { 'Pocco81/DAPInstall.nvim' }
     use { 'neoclide/coc.nvim', branch = 'release' }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } } -- debugger ui
+    use { "rcarriga/nvim-dap-ui", commit = "8ba36d8479522e374939674379806710712cb47a",
+        requires = { "mfussenegger/nvim-dap" } } -- debugger ui
+
     use {
         "folke/which-key.nvim",
         config = function()

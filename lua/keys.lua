@@ -4,7 +4,7 @@
 -- lhs (the custom keybinds you need)
 -- rhs (the commands or existing keybinds to customise)
 -- opts (additional options like <silent>/<noremap>, see :h map-arguments for more info on it)
-local utils=require("utils")
+local utils = require("utils")
 
 
 -- Load all OPTs
@@ -57,7 +57,6 @@ utils.map("n", "HL", ":HopLineStart<cr>")
 -- Telescope
 utils.map("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<cr>")
 utils.map("n", "<leader>fm", ":Telescope media_files<cr>")
-utils.map("n", "<leader>fg", ":lua require('telescope.builtin').live_grep()<cr>")
 utils.map("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<cr>")
 utils.map("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>")
 utils.map("n", "<leader>fd", ":lua require('telescope.builtin').diagnostics()<cr>")
@@ -71,6 +70,7 @@ utils.map("n", "<leader>fc", ":lua require('telescope.builtin').commands()<cr>")
 utils.map("n", "<leader>fch", ":lua require('telescope.builtin').command_history()<cr>")
 utils.map("n", "<leader>fsh", ":lua require('telescope.builtin').search_history()<cr>")
 utils.map("n", "<leader>fmp", ":lua require('telescope.builtin').man_pages()<cr>")
+utils.map("n", "<leader>fgg", ":lua require('telescope.builtin').live_grep()<cr>")
 utils.map("n", "<leader>fgc", ":lua require('telescope.builtin').git_commits()<cr>")
 utils.map("n", "<leader>fgb", ":lua require('telescope.builtin').git_branches()<cr>")
 
@@ -140,6 +140,4 @@ vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
 vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
 vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
 
--- .mappings and config for rust language 
-
-
+-- .mappings and config for rust language
