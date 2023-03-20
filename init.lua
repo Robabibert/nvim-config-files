@@ -21,7 +21,7 @@ hi ColorColumn guifg=NONE guibg=#204563 gui=NONE
 
 -- IMPORTS
 require('plug') -- Plugins
-require('dbg') -- Plugins
+require('dbg') -- Debugging
 require('languages') -- Plugins
 require('vars') -- Variables
 require('opts') -- Options
@@ -43,6 +43,19 @@ require('lualine').setup {
 ----------------------------------------
 -- PLUGINS initialization           ----
 ----------------------------------------
+-- dap install
+local dap_install = require("dap-install")
+
+dap_install.setup({
+  installation_path = os.getenv("HOME") .. "/.local/share/nvim/dapinstall/",
+  verbosely_call_debuggers = true
+})
+
+local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
+for _, debugger in ipairs(dbg_list) do
+  dap_install.config(debugger)
+end
+
 
 
 -- Symbols Outline (new tagbar)
@@ -296,6 +309,8 @@ require('crates').setup({
 -- LSP Server Configurations        ----
 ----------------------------------------
 
+
+
 -- LSP Config
 local nvim_lsp = require('lspconfig')
 nvim_lsp.tsserver.setup({})
@@ -477,6 +492,8 @@ cmp.setup.cmdline('/', {
         { name = 'buffer' }
     }
 })
+--this snippet causes autocompletion to fail within the commandline
+--[[ 
 -- `:` cmdline setup.
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
@@ -487,7 +504,7 @@ cmp.setup.cmdline(':', {
     })
 })
 
-
+ ]]
 
 ----------------------------------------
 -- TREE-SITTER Setup                ----

@@ -32,6 +32,7 @@ return require('packer').startup(function()
             "antoinemadec/FixCursorHold.nvim"
         }
     }
+    use  {'Pocco81/DAPInstall.nvim',  branch = 'dev' } 
     use { "mfussenegger/nvim-jdtls", ft = { "java" } }
     use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'
@@ -103,7 +104,6 @@ return require('packer').startup(function()
     use { 'nvim-telescope/telescope-dap.nvim' }
     use { 'mfussenegger/nvim-dap-python' }
     use { 'theHamsta/nvim-dap-virtual-text' }
-    use { 'Pocco81/DAPInstall.nvim' }
     use { 'neoclide/coc.nvim', branch = 'release' }
     use { "rcarriga/nvim-dap-ui", commit = "8ba36d8479522e374939674379806710712cb47a",
         requires = { "mfussenegger/nvim-dap" } } -- debugger ui
