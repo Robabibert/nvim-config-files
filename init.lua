@@ -47,13 +47,13 @@ require('lualine').setup {
 local dap_install = require("dap-install")
 
 dap_install.setup({
-  installation_path = os.getenv("HOME") .. "/.local/share/nvim/dapinstall/",
-  verbosely_call_debuggers = true
+    installation_path = os.getenv("HOME") .. "/.local/share/nvim/dapinstall/",
+    verbosely_call_debuggers = true
 })
 
 local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 for _, debugger in ipairs(dbg_list) do
-  dap_install.config(debugger)
+    dap_install.config(debugger)
 end
 
 
@@ -691,4 +691,30 @@ require("dapui").setup({
         max_type_length = nil, -- Can be integer or nil.
         max_value_lines = 100, -- Can be integer or nil.
     }
+})
+require('dressing').setup({})
+require("compiler-explorer").setup({
+    url = "https://godbolt.org",
+    infer_lang = true, -- Try to infer possible language based on file extension.
+    binary_hl = "Comment", -- Highlight group for binary extmarks/virtual text.
+    autocmd = {
+        enable = false, -- Enable highlighting matching lines between source and assembly windows.
+        hl = "Cursorline", -- Highlight group used for line match highlighting.
+    },
+    diagnostics = { -- vim.diagnostic.config() options for the ce-diagnostics namespace.
+        underline = false,
+        virtual_text = false,
+        signs = false,
+    },
+    split = "split", -- How to split the window after the second compile (split/vsplit).
+    spinner_frames = { "⣼", "⣹", "⢻", "⠿", "⡟", "⣏", "⣧", "⣶" }, -- Compiling... spinner settings.
+    spinner_interval = 100,
+    compiler_flags = "", -- Default flags passed to the compiler.
+    job_timeout = 25000, -- Timeout for libuv job in milliseconds.
+    languages = { -- Language specific default compiler/flags
+        --c = {
+        --  compiler = "g121",
+        --  compiler_flags = "-O2 -Wall",
+        --},
+    },
 })

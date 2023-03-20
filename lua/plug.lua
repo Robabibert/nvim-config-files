@@ -32,7 +32,10 @@ return require('packer').startup(function()
             "antoinemadec/FixCursorHold.nvim"
         }
     }
-    use  {'Pocco81/DAPInstall.nvim',  branch = 'dev' } 
+    use { 'stevearc/dressing.nvim' }
+    use { 'krady21/compiler-explorer.nvim' }
+    use { 'rcarriga/nvim-notify' }
+    use { 'Pocco81/DAPInstall.nvim', branch = 'dev' }
     use { "mfussenegger/nvim-jdtls", ft = { "java" } }
     use "b0o/mapx.nvim"
     use 'wbthomason/packer.nvim'
