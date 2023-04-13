@@ -16,9 +16,9 @@ return require('packer').startup(function()
     use {
         "tpope/vim-fugitive",
         opt = true,
-        cmd = {  "G", "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gsplit",
-      "Gread", "Gwrite", "Ggrep", "Glgrep", "Gmove",
-      "Gdelete", "Gremove", "Gbrowse" },
+        cmd = { "G", "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gsplit",
+            "Gread", "Gwrite", "Ggrep", "Glgrep", "Gmove",
+            "Gdelete", "Gremove", "Gbrowse" },
         requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
         -- wants = { "vim-rhubarb" },
     }
