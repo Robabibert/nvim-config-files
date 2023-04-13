@@ -253,14 +253,14 @@ require('telescope').setup {
             "^./target/",
             "LICENSE*"
         },
-        layout_strategy = 'vertical',
+        layout_strategy = 'horizontal',
         layout_config = { height = 0.95, width = 0.95 },
     },
     extensions = {
         media_files = {
             -- filetypes whitelist
             -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-            filetypes = { "png", "webp", "jpg", "jpeg", "ppm", "pdf" },
+            filetypes = { "png", "webp", "jpg", "jpeg", "ppm", "pdf", "otf" },
             find_cmd = "rg", -- find command (defaults to `fd`)
         },
     },
@@ -445,7 +445,7 @@ cmp.setup({
         { name = 'luasnip', keyword_length = 1, priority = 7 }, -- for lua users
         { name = 'nvim_lsp_signature_help', priority = 8 }, -- display function signatures with current parameter emphasized
         { name = 'nvim_lua', keyword_length = 1, priority = 8 }, -- complete neovim's Lua runtime API such vim.lsp.*
-        { name = 'buffer', keyword_length = 1, priority = 5 }, -- source current buffer
+        { name = 'buffer' }, -- source current buffer
         -- { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip
         { name = 'calc' }, -- source for math calculation
     },
@@ -485,6 +485,7 @@ cmp.setup({
     },
 })
 
+
 -- `/` cmdline setup.
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
@@ -493,19 +494,21 @@ cmp.setup.cmdline('/', {
     }
 })
 --this snippet causes autocompletion to fail within the commandline
---[[ 
 -- `:` cmdline setup.
-cmp.setup.cmdline(':', {
+--[[ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'path' }
     }, {
-        { name = 'cmdline' }
+        {
+            name = 'cmdline',
+            option = {
+                ignore_cmds = { 'Man', '!' }
+            }
+        }
     })
 })
-
  ]]
-
 ----------------------------------------
 -- TREE-SITTER Setup                ----
 ----------------------------------------

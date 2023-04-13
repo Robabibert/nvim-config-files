@@ -57,10 +57,13 @@ utils.map("n", "HL", ":HopLineStart<cr>")
 -- Telescope
 utils.map("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<cr>")
 utils.map("n", "<leader>fm", ":Telescope media_files<cr>")
-utils.map("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<cr>")
+utils.map("n", "<leader>fb",
+    ":lua require('telescope.builtin').buffers({sort_last_used=true,ignore_current_buffer=true})<cr>")
 utils.map("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>")
 utils.map("n", "<leader>fd", ":lua require('telescope.builtin').diagnostics()<cr>")
-utils.map("n", "<leader>fs", ":lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+
+utils.map("n", "<leader>fss", ":lua require('telescope.builtin').lsp_document_symbols()<cr>")
+utils.map("n", "<leader>flsp", ":lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
 utils.map("n", "<leader>fr", ":lua require('telescope.builtin').lsp_references()<cr>")
 utils.map("n", "<leader>fi", ":lua require('telescope.builtin').lsp_implementations()<cr>")
 utils.map("n", "<leader>fl", ":lua require('telescope.builtin').treesitter()<cr>")

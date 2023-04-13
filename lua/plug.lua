@@ -16,7 +16,9 @@ return require('packer').startup(function()
     use {
         "tpope/vim-fugitive",
         opt = true,
-        cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
+        cmd = {  "G", "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gsplit",
+      "Gread", "Gwrite", "Ggrep", "Glgrep", "Gmove",
+      "Gdelete", "Gremove", "Gbrowse" },
         requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" },
         -- wants = { "vim-rhubarb" },
     }
@@ -24,6 +26,7 @@ return require('packer').startup(function()
     use {
         "nvim-neotest/neotest-python"
     }
+    use { "nvim-lua/plenary.nvim" }
     use {
         "nvim-neotest/neotest",
         requires = {
